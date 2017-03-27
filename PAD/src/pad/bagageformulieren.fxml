@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+
+<AnchorPane id="AnchorPane" fx:id="flight_input" prefHeight="600.0" prefWidth="1000.0" stylesheets="@style/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pad.BagageformulierenController">
+    <children>
+        <Pane id="background" fx:id="background" layoutY="122.0" prefHeight="478.0" prefWidth="1000.0" />
+        <fx:include fx:id="navigatiebalk" source="navigatiebalk.fxml" />
+        <Pane id="pagestyle" fx:id="formulier" layoutX="100.0" layoutY="122.0" prefHeight="478.0" prefWidth="800.0">
+            <children>
+                <GridPane layoutX="14.0" layoutY="25.0" prefHeight="387.0" prefWidth="772.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="180.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="309.0" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="180.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label fx:id="mail_label" prefHeight="30.0" prefWidth="126.0" text="E-mail:" GridPane.rowIndex="8" />
+                        <Label fx:id="phone_label" prefHeight="30.0" prefWidth="126.0" text="Telefoon:" GridPane.rowIndex="7" />
+                        <Label fx:id="country_label" prefHeight="30.0" prefWidth="126.0" text="Land:" GridPane.rowIndex="6" />
+                        <Label fx:id="zipcode_label" prefHeight="30.0" prefWidth="126.0" text="Postcode:" GridPane.rowIndex="5" />
+                        <Label fx:id="residence_label" prefHeight="30.0" prefWidth="126.0" text="Woonplaats:" GridPane.rowIndex="4" />
+                        <Label fx:id="address_label" prefHeight="30.0" prefWidth="126.0" text="Adres:" GridPane.rowIndex="3" />
+                        <Label fx:id="surname_label" prefHeight="30.0" prefWidth="126.0" text="Achternaam:" GridPane.rowIndex="2" />
+                        <Label fx:id="name_label" prefHeight="30.0" prefWidth="126.0" text="Voornaam:" GridPane.rowIndex="1" />
+                        <Label fx:id="airport_label" prefHeight="30.0" prefWidth="126.0" text="Luchthaven:" />
+                        <ComboBox id="ComboBox" fx:id="airport_combo" minHeight="-Infinity" prefHeight="30.0" prefWidth="318.0" promptText="Kies hier uw luchthaven" GridPane.columnIndex="1">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Alanya-Gazipasa" />
+                                    <String fx:value="Amsterdam" />
+                                    <String fx:value="Antalya" />
+                                    <String fx:value="Banjul" />
+                                    <String fx:value="Bodrum" />
+                                    <String fx:value="Bourgas" />
+                                    <String fx:value="Corfu" />
+                                    <String fx:value="Dalaman" />
+                                    <String fx:value="Dubai" />
+                                    <String fx:value="Eindhoven" />
+                                    <String fx:value="Faro" />
+                                    <String fx:value="Fuerteventura" />
+                                    <String fx:value="Gran Canaria Palmas" />
+                                    <String fx:value="Heraklion" />
+                                    <String fx:value="Hurghada" />
+                                    <String fx:value="Izmir" />
+                                    <String fx:value="Kos" />
+                                    <String fx:value="Lanzarote" />
+                                    <String fx:value="Malaga" />
+                                    <String fx:value="Marrakech" />
+                                    <String fx:value="Mytilene" />
+                                    <String fx:value="Nicosia-Ercan" />
+                                    <String fx:value="Ohrid" />
+                                    <String fx:value="Palma Majorca" />
+                                    <String fx:value="Rhodes" />
+                                    <String fx:value="Tenrife" />
+                                    <String fx:value="Zkynthos" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                        <TextField id="TextField" fx:id="name_input" minHeight="-Infinity" prefHeight="30.0" prefWidth="318.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField id="TextField" fx:id="surname_input" minHeight="-Infinity" prefHeight="30.0" prefWidth="318.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField id="TextField" fx:id="address_input" minHeight="-Infinity" prefHeight="30.0" prefWidth="318.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField id="TextField" fx:id="residence_input" minHeight="-Infinity" prefHeight="30.0" prefWidth="318.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField id="TextField" fx:id="zipcode_input" minHeight="-Infinity" prefHeight="30.0" prefWidth="318.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField id="TextField" fx:id="country_input" minHeight="-Infinity" prefHeight="30.0" prefWidth="318.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField id="TextField" fx:id="phone_input" minHeight="-Infinity" prefHeight="30.0" prefWidth="318.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField id="TextField" fx:id="mail_input" minHeight="-Infinity" prefHeight="30.0" prefWidth="184.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <Label fx:id="label_label" prefHeight="30.0" prefWidth="126.0" text="Labelnummer:" GridPane.columnIndex="3" />
+                        <Label fx:id="flight_label" prefHeight="30.0" prefWidth="126.0" text="Vluchtnummer:" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Label fx:id="destination_label" prefHeight="30.0" prefWidth="126.0" text="Bestemming:" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <Label fx:id="type_label" prefHeight="30.0" prefWidth="126.0" text="Type:" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Label fx:id="brand_label" prefHeight="30.0" prefWidth="126.0" text="Merk:" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <Label fx:id="color_label" prefHeight="30.0" prefWidth="126.0" text="Kleur:" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                        <Label fx:id="characteristics_label" prefHeight="30.0" prefWidth="126.0" text="Kenmerken:" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                        <Label fx:id="picture_label" prefHeight="30.0" prefWidth="126.0" text="Afbeelding:" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                        <TextField id="TextField" fx:id="labelnumber_input" minHeight="-Infinity" prefHeight="30.0" prefWidth="104.0" GridPane.columnIndex="4" />
+                        <TextField id="TextField" fx:id="flightnumber_input" minHeight="-Infinity" prefHeight="30.0" prefWidth="318.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <ComboBox id="ComboBox" fx:id="destination_combo" minHeight="-Infinity" prefHeight="30.0" prefWidth="318.0" promptText="Kies hier uw luchthaven" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Alanya-Gazipasa" />
+                                    <String fx:value="Amsterdam" />
+                                    <String fx:value="Antalya" />
+                                    <String fx:value="Banjul" />
+                                    <String fx:value="Bodrum" />
+                                    <String fx:value="Bourgas" />
+                                    <String fx:value="Corfu" />
+                                    <String fx:value="Dalaman" />
+                                    <String fx:value="Dubai" />
+                                    <String fx:value="Eindhoven" />
+                                    <String fx:value="Faro" />
+                                    <String fx:value="Fuerteventura" />
+                                    <String fx:value="Gran Canaria Palmas" />
+                                    <String fx:value="Heraklion" />
+                                    <String fx:value="Hurghada" />
+                                    <String fx:value="Izmir" />
+                                    <String fx:value="Kos" />
+                                    <String fx:value="Lanzarote" />
+                                    <String fx:value="Malaga" />
+                                    <String fx:value="Marrakech" />
+                                    <String fx:value="Mytilene" />
+                                    <String fx:value="Nicosia-Ercan" />
+                                    <String fx:value="Ohrid" />
+                                    <String fx:value="Palma Majorca" />
+                                    <String fx:value="Rhodes" />
+                                    <String fx:value="Tenrife" />
+                                    <String fx:value="Zkynthos" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                        <ComboBox id="ComboBox" fx:id="type_combo" minHeight="-Infinity" prefHeight="30.0" prefWidth="318.0" promptText="Kies hier uw type bagage" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                        <TextField id="TextField" fx:id="brand_input" minHeight="-Infinity" prefHeight="30.0" prefWidth="318.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                        <ComboBox id="ComboBox" fx:id="color_combo" minHeight="-Infinity" prefHeight="30.0" prefWidth="318.0" promptText="Kies hier de kleur van de bagage" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                        <TextField id="TextField" fx:id="characteristics_input" alignment="TOP_LEFT" minHeight="-Infinity" prefHeight="30.0" prefWidth="318.0" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                        <Button id="picturebutton" fx:id="picture_button" minHeight="-Infinity" mnemonicParsing="false" onAction="#handleFileSelector" prefHeight="30.0" prefWidth="318.0" text="Klik hier om een afbeelding toe te voegen" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+                        <Label fx:id="language_label" prefHeight="30.0" prefWidth="126.0" text="Taal:" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                        <ComboBox id="ComboBox" fx:id="language_combo" minHeight="-Infinity" prefHeight="30.0" prefWidth="318.0" promptText="Kies hier de taal van de klant" GridPane.columnIndex="4" GridPane.rowIndex="8">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                    </children>
+                </GridPane>
+                <Button id="mainbutton" fx:id="send_button" layoutX="14.0" layoutY="415.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#handleSendToDatabase" prefHeight="49.0" prefWidth="772.0" text="Verzenden" />
+                <Label id="loginerror" fx:id="loginerror" alignment="TOP_LEFT" layoutX="14.0" prefHeight="25.0" prefWidth="763.0" textFill="RED" visible="false">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+            <Label id="loginerror" fx:id="mandatory" alignment="TOP_LEFT" layoutX="557.0" prefHeight="25.0" prefWidth="223.0" textAlignment="RIGHT">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>         
+            </children>
+        </Pane>
+        <Pane id="popup" fx:id="popup" layoutX="220.0" layoutY="159.0" prefHeight="360.0" prefWidth="560.0" visible="false">
+            <children>
+                <TableView fx:id="table" layoutX="14.0" layoutY="172.0" prefHeight="116.0" prefWidth="533.0">
+                    <columns>
+                        <TableColumn id="status" fx:id="status" maxWidth="182.0" minWidth="0.0" prefWidth="102.0" text="Status" />
+                        <TableColumn id="type" fx:id="type" maxWidth="150.0" minWidth="85.0" prefWidth="105.0" text="Type" />
+                        <TableColumn id="color" fx:id="color" maxWidth="182.0" minWidth="0.0" prefWidth="73.0" text="Kleur" />
+                        <TableColumn id="brand" fx:id="brand" maxWidth="150.0" minWidth="60.0" prefWidth="111.0" text="Merk" />                            
+                        <TableColumn id="picture" fx:id="picture" maxWidth="150.0" minWidth="60.0" prefWidth="83.0" text="Afbeelding" />                            
+                        <TableColumn id="information" fx:id="information" maxWidth="150.0" minWidth="60.0" prefWidth="97.0" text="Informatie" />                            
+                        <TableColumn id="firstName" fx:id="firstName" maxWidth="150.0" minWidth="60.0" prefWidth="97.0" text="Voornaam" />                            
+                        <TableColumn id="surName" fx:id="surName" maxWidth="150.0" minWidth="60.0" prefWidth="97.0" text="Achternaam" />                            
+                    </columns>
+                </TableView>
+                <Label id="popup_label" fx:id="popup_label" alignment="CENTER" layoutY="5.0" prefHeight="20.0" prefWidth="560.0" text="Waarschuwing" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Button id="popup_close" fx:id="closepopup" layoutX="491.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleCancelBut" prefHeight="20.0" prefWidth="61.0">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/popup-close.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button id="mainbutton" fx:id="popup_verzbutton" layoutX="14.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleVerzendenBut" prefHeight="49.0" prefWidth="259.0" text="Verzenden" />
+                <Button id="mainbutton" fx:id="popup_annubutton" layoutX="287.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleCancelBut" prefHeight="49.0" prefWidth="259.0" text="Annuleren" />
+                <TextArea id="TextArea" fx:id="textinfo" editable="false" layoutX="14.0" layoutY="39.0" prefHeight="119.0" prefWidth="383.0" text="Er is/zijn COUNT vermiste bagage(s) met dezelfde kenmerken &#10;gevonden als wat er net is ingevuld.&#10;" wrapText="true" />
+                <Button id="popup_image" layoutX="411.0" layoutY="39.0" mnemonicParsing="false" prefHeight="119.0" prefWidth="135.0">
+                    <graphic>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/no_image.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
