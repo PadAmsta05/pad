@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.media.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -15,6 +16,18 @@
                 <Pane layoutX="28.0" layoutY="28.0" prefHeight="459.0" prefWidth="944.0">
                     <children>
                         <TextArea prefHeight="200.0" prefWidth="200.0" text="Hier moet: &#10;&#10;- idk&#10;" />
+                        <MediaView>
+                            <mediaPlayer>
+                                <MediaPlayer fx:id="mediaPlayer" autoPlay="false">
+                                    <media>
+                                        <Media fx:id="media" source="http://download.oracle.com/otndocs/products/javafx/oow2010-2.flv" />
+                                    </media>
+                                </MediaPlayer>
+                            </mediaPlayer>    
+                        </MediaView>
+                        <Button fx:id="buttonPlay" mnemonicParsing="false" onAction="#playAndHide" text="Play" />
+                        <Button fx:id="buttonPause" mnemonicParsing="false" onAction="#pauseAndHide" layoutX="40.0" text="Pause" visible="false"/>
+                        <Button fx:id="buttonStop" mnemonicParsing="false" onAction="#stopAndHide" text="Stop" visible="false"/>
                     </children>
                 </Pane>
             </children>
