@@ -17,7 +17,7 @@ import javafx.fxml.Initializable;
  *
  * @author Team Amsta 05
  */
-public class InstellingenController implements Initializable {
+public class BestandenoverzichtController implements Initializable {
 
     @FXML
     private final PAD pad = new PAD();
@@ -28,6 +28,5 @@ public class InstellingenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
     }
 }

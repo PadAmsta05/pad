@@ -17,7 +17,7 @@ import javafx.fxml.Initializable;
  *
  * @author Team Amsta 05
  */
-public class InstellingenController implements Initializable {
+public class HomeController implements Initializable {
 
     @FXML
     private final PAD pad = new PAD();

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="85.0" prefWidth="1000.0" stylesheets="@style/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pad.HeaderController">
+    <children>
+        <Pane id="logo" layoutX="28.0" layoutY="14.0" prefHeight="57.0" prefWidth="200.0" />
+        <HBox id="HBoxSM" fx:id="HBoxSM" layoutX="245.0" layoutY="18.0" prefHeight="49.0" prefWidth="737.0">
+            <children>
+                <Button id="menubutton" fx:id="home" mnemonicParsing="false" onAction="#handleHome" prefHeight="48.0" text="Home" textFill="WHITE">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    
+                </Button>
+                <SplitPane id="splitter" />
+                <Button id="menubutton" fx:id="found" mnemonicParsing="false" onAction="#handleBestandenOverzicht" prefHeight="48.0" text="Alle bestanden" textFill="WHITE">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                  
+                </Button>
+                <SplitPane id="splitter" />
+
+                <Button id="menubutton" fx:id="settings" mnemonicParsing="false" onAction="#handleSettings" prefHeight="48.0" text="Instellingen" textFill="WHITE">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    </Button>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
