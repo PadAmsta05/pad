@@ -49,12 +49,13 @@ public class PAD extends Application {
 
     }
       
-
+/*
     public Connection connectDatabase(Connection conn) throws SQLException {
         conn = DriverManager.getConnection("jdbc:mysql://localhost/bagagedatabase?user=root&password=root&useSSL=false");
         return conn;
     }
-
+*/
+    
     /**
      * @param args the command line arguments
      */
