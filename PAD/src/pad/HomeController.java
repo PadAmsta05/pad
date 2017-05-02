@@ -5,6 +5,7 @@
  */
 package pad;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -15,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
 /**
@@ -36,13 +39,33 @@ public class HomeController implements Initializable {
     private MediaPlayer mediaPlayer;
     @FXML
     private Media media;
+    @FXML
+    private MediaView mediaView;
+    
+    private String filepath;
+    
+    private int i= 0;
 
     @FXML
+    
+    private void handleButtonAction(ActionEvent event) {
+FileChooser filechoose = new FileChooser();
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Selecta dela file (*.mp4)", "*.mp4");
+            filechoose.getExtensionFilters().add(filter);
+            File file = filechoose.showOpenDialog(null);
+            filepath=file.toURI().toString();
+            
+        if(filepath != null){
+        Media media = new Media(filepath);
+        mediaPlayer = new MediaPlayer(media);
+        mediaView.setMediaPlayer(mediaPlayer);
+
+            }
+        
+
+    }
     public void playAndHide(ActionEvent event) {
         mediaPlayer.play();
-        buttonPlay.setVisible(false);
-        buttonPause.setVisible(true);
-        buttonStop.setVisible(true);
     }
     
     @FXML
@@ -53,9 +76,7 @@ public class HomeController implements Initializable {
     @FXML
     public void stopAndHide(ActionEvent event) {
         mediaPlayer.stop();
-        buttonStop.setVisible(false);
-        buttonPause.setVisible(false);
-        buttonPlay.setVisible(true);
+
     }
 
     @Override
