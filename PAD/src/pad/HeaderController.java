@@ -11,7 +11,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
@@ -19,7 +18,6 @@ import javafx.scene.control.Button;
  * @author Team Amsta 05
  */
 public class HeaderController implements Initializable {
-
     @FXML
     private PAD pad = new PAD();
 

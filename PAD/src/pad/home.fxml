@@ -16,7 +16,7 @@
                 <Pane layoutX="28.0" layoutY="28.0" prefHeight="459.0" prefWidth="944.0">
                     <children>
                         <TextArea prefHeight="200.0" prefWidth="200.0" text="Hier moet: &#10;&#10;- idk&#10;" />
-                        <MediaView>
+                        <MediaView fx:id="mediaa">
                             <mediaPlayer>
                                 <MediaPlayer fx:id="mediaPlayer" autoPlay="false">
                                     <media>
