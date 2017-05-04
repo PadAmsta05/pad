@@ -49,7 +49,6 @@ public class BestandenoverzichtController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//Tabel
         getBestandData();
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         naam.setCellValueFactory(new PropertyValueFactory<>("naam"));

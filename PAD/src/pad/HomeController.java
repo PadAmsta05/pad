@@ -54,7 +54,6 @@ public class HomeController implements Initializable {
     private MediaView mediaView;
 
     private String filepath;
-
     private int i = 0;
 
     @FXML
@@ -71,6 +70,10 @@ public class HomeController implements Initializable {
             filechoose.getExtensionFilters().add(filter);
             File file = filechoose.showOpenDialog(null);
             filepath = file.toURI().toString();
+            
+            String sql = "INSERT INTO amstadatabase.bestanden (bestandurl, naam) "
+                            + "VALUES ('" + filepath + "', 'naam')";
+                        
             String sql_select = "SELECT bestandurl FROM amstadatabase.bestanden ORDER BY RAND() LIMIT 1";
             try (ResultSet rs = stmt.executeQuery(sql_select)) {
                 String bestandurl = "";
@@ -78,17 +81,12 @@ public class HomeController implements Initializable {
                     bestandurl = rs.getString("bestandurl");
                 }
 
-                System.out.println(bestandurl);
                 if (filepath != null) {
                     Media media = new Media(bestandurl);
                     mediaPlayer = new MediaPlayer(media);
                     mediaView.setMediaPlayer(mediaPlayer);
 
-                    String sql = "INSERT INTO amstadatabase.bestanden (bestandurl) "
-                            + "VALUES ('" + filepath + "')";
-
-                    System.out.println(filepath);
-                    System.out.println(sql);
+                  
                     stmt.executeUpdate(sql);
                 }
             }
