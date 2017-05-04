@@ -17,7 +17,18 @@
             <children>
                 <Pane layoutX="28.0" layoutY="28.0" prefHeight="459.0" prefWidth="944.0">
                     <children>
-                        <TextArea prefHeight="200.0" prefWidth="200.0" text="Hier moet: &#10;&#10;- Overzicht van alle bestanden&#10;- Mogelijkheid om te verwijderen&#10;- Mogelijkheid om toe te voegen&#10;" />
+                        <TextArea fx:id="Area" layoutX="14.0" layoutY="15.0" prefHeight="200.0" prefWidth="200.0" text="Hier moet: &#10;&#10;- Overzicht van alle bestanden&#10;- Mogelijkheid om te verwijderen&#10;- Mogelijkheid om toe te voegen&#10;" />
+                        <TableView fx:id="tabel" layoutX="228.0" layoutY="14.0" prefHeight="264.0" prefWidth="702.0">
+                          <columns>
+                            <TableColumn id="id" fx:id="id" prefWidth="75.0" text="ID" />
+                            <TableColumn id="naam" fx:id="naam" prefWidth="827.0" text="NAAM" />
+                          </columns>
+                        </TableView>
+              <Button fx:id="remove_button" layoutX="14.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleRemove" prefHeight="49.0" prefWidth="200.0" text="Bestand verwijderen" />
+              <Button fx:id="removeconfirm_button" layoutX="14.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleRemoveConfirm" prefHeight="49.0" prefWidth="200.0" text="Defenitief verwijderen" visible="false" />
+                      
+              <Label fx:id="bestandId_label" prefHeight="30.0" prefWidth="126.0" visible="false" />
+                   
                     </children>
                 </Pane>
             </children>

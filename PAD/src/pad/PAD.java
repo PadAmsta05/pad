@@ -6,6 +6,9 @@
 package pad;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -46,12 +49,12 @@ public class PAD extends Application {
 
     }
       
-/*
+
     public Connection connectDatabase(Connection conn) throws SQLException {
-        conn = DriverManager.getConnection("jdbc:mysql://localhost/bagagedatabase?user=root&password=root&useSSL=false");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost/amstadatabase?user=root&password=root&useSSL=false");
         return conn;
     }
-*/
+
     
     /**
      * @param args the command line arguments
