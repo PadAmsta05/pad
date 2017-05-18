@@ -6,6 +6,8 @@
 package pad;
 
 import java.io.File;
+import java.awt.event.*;
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,12 +17,15 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -47,12 +52,13 @@ public class HomeController implements Initializable {
     private Button buttonPlay, buttonPause, buttonStop;
     @FXML
     private MediaPlayer mediaPlayer;
-
+    @FXML
+    private Slider V;
    @FXML
     private Media media;
     @FXML
     private MediaView mediaView;
-
+static Thread thread = new Thread();
     private String filepath;
     private int i = 0;
 
@@ -98,8 +104,20 @@ public class HomeController implements Initializable {
         }
     }
 
-    public void playAndHide(ActionEvent event) {
+    public void playAndHide(ActionEvent event) throws InterruptedException {
         mediaPlayer.play();
+         V.setValue(mediaPlayer.getVolume() *100);
+        V.valueProperty().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                mediaPlayer.setVolume(V.getValue() / 100);
+            }
+        }
+        );
+        for (int j = 10; j >= 0; j--) {
+            thread.sleep(1000);
+            mediaPlayer.pause();
+        }
     }
 
     @FXML
