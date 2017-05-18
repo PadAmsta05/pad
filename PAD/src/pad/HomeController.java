@@ -114,10 +114,8 @@ static Thread thread = new Thread();
             }
         }
         );
-        for (int j = 10; j >= 0; j--) {
-            thread.sleep(1000);
-            mediaPlayer.pause();
-        }
+
+        
     }
 
     @FXML
