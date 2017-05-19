@@ -44,9 +44,14 @@ public class PAD extends Application {
         Stage mainStage;
         mainStage = PAD.parentWindow;
         mainStage.setTitle(titleWindow);
-        mainStage.setResizable(false);
         mainStage.getScene().setRoot(window);
 
+    }
+    
+    public void fullScreen(Boolean aanuit) throws IOException {
+        Stage mainStage;
+        mainStage = PAD.parentWindow;
+        mainStage.setFullScreen(aanuit);
     }
       
 

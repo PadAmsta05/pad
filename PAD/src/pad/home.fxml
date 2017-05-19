@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.media.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -8,22 +9,71 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" stylesheets="@style/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pad.HomeController">
+<VBox id="pagestyle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@style/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pad.HomeController">
     <children>
-        <fx:include source="header.fxml" />
-        <Pane id="pagestyle" layoutY="85.0" prefHeight="515.0" prefWidth="1000.0">
-            <children>
-                <Pane layoutX="28.0" layoutY="28.0" prefHeight="459.0" prefWidth="944.0">
+        <fx:include fx:id="header" source="header.fxml" />
+        <Pane prefHeight="515.0">
+            <children>             
+                <MediaView fx:id="mediaView" fitHeight="-Infinity" fitWidth="-Infinity" layoutX="14.0" layoutY="14.0" />
+                <Pane fx:id="buttonsPane" layoutX="15.0" layoutY="473.0" prefHeight="28.0" prefWidth="144.0">
                     <children>
-                        <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="200.0" layoutX="87.0" layoutY="51.0" />
-                        <Button fx:id="buttonPlay" layoutX="121.0" layoutY="402.0" mnemonicParsing="false" onAction="#playAndHide" text="Play" />
-                  <Button layoutX="40.0" layoutY="402.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Select" />
-                  <Button layoutX="187.0" layoutY="402.0" mnemonicParsing="false" onAction="#stopAndHide" text="Stop" />
-                  <Button layoutX="270.0" layoutY="402.0" mnemonicParsing="false" onAction="#pauseAndHide" text="Pause" />
-
+                        <Button id="playerbutton" fx:id="buttonPlay" mnemonicParsing="false" onAction="#playAndHide">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/play.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button id="playerbutton" layoutX="72.0" mnemonicParsing="false" onAction="#stopAndHide">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/stop.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button id="playerbutton" fx:id="buttonPause" mnemonicParsing="false" onAction="#pauseAndHide" visible="false">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/pause.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button id="playerbutton" layoutX="36.0" mnemonicParsing="false" onAction="#nextVideo">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/forward.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button id="playerbutton" fx:id="buttonExpand" layoutX="108.0" mnemonicParsing="false" onAction="#expand">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/expand.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button id="playerbutton" fx:id="buttonSmaller" layoutX="108.0" mnemonicParsing="false" onAction="#makeSmaller" visible="false">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/smaller.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
                     </children>
                 </Pane>
             </children>
         </Pane>
     </children>
-</AnchorPane>
+</VBox>

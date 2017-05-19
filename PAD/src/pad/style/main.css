@@ -27,3 +27,8 @@
     -fx-background-size: 200, 150;
     -fx-background-repeat: no-repeat;
 }
+
+#playerbutton {
+    -fx-background-color: orange;
+    -fx-background-radius: 0;
+}

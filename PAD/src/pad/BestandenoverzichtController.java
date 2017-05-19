@@ -5,6 +5,7 @@
  */
 package pad;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -17,11 +18,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -36,16 +42,22 @@ public class BestandenoverzichtController implements Initializable {
     private Statement stmt = null;
     @FXML
     private Connection conn = null;
-            @FXML
+    @FXML
     private TableView<Bestanden> tabel;
-        @FXML
+    @FXML
     private ObservableList<Bestanden> data = FXCollections.observableArrayList();
-        @FXML
+    @FXML
     private TableColumn id, naam;
-        @FXML
-        private TextArea Area;
-        @FXML
-        private Label bestandId_label;
+    @FXML
+    private TextArea Area;
+    @FXML
+    private TextField naamField;
+    @FXML
+    private Label bestandId_label;
+    @FXML
+    private Button removeconfirm_button, remove_button, chooseButton;
+    private String filepath;
+    private int i = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -53,23 +65,65 @@ public class BestandenoverzichtController implements Initializable {
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         naam.setCellValueFactory(new PropertyValueFactory<>("naam"));
 
-                tabel.setItems(data);
+        tabel.setItems(data);
 
     }
-    
+
+    @FXML
+    private void handleChooseFile(ActionEvent event) {
+
+        FileChooser filechoose = new FileChooser();
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Selecta dela file (*.mp4)", "*.mp4");
+        filechoose.getExtensionFilters().add(filter);
+        File file = filechoose.showOpenDialog(null);
+
+        filepath = file.toURI().toString();
+
+        chooseButton.setText(filepath);
+    }
+
+    @FXML
+    private void handleAddDatabase(ActionEvent event) throws SQLException, IOException {
+        if ((filepath == null) || (naamField.getText() == null)) {
+            System.out.println("error");
+        } else {
+
+            try {
+                Statement stmt = null;
+                Connection conn = null;
+
+                conn = pad.connectDatabase(conn);
+                stmt = conn.createStatement();
+
+                String sql = "INSERT INTO amstadatabase.bestanden (bestandurl, naam) "
+                        + "VALUES ('" + filepath + "', '" + naamField.getText() + "')";
+
+                stmt.executeUpdate(sql);
+
+                pad.changePage("Bestanden overzicht", "bestandenoverzicht.fxml");
+
+            } catch (SQLException ex) {
+                // handle any errors
+                System.out.println("SQLException: " + ex.getMessage());
+                System.out.println("SQLState: " + ex.getSQLState());
+                System.out.println("VendorError: " + ex.getErrorCode());
+            }
+        }
+    }
+
     public void getBestandData() {
         try {
             conn = pad.connectDatabase(conn);
             stmt = conn.createStatement();
             //connectToDatabase(conn, stmt, "test", "root", "root");
-             String sql = "SELECT * FROM amstadatabase.bestanden";
-            
+            String sql = "SELECT * FROM amstadatabase.bestanden";
+
             try (ResultSet rs = stmt.executeQuery(sql)) {
                 while (rs.next()) {
                     //Retrieve by column name
                     int id = rs.getInt("id");
                     String naam = rs.getString("naam");
-                    
+
                     data.add(new Bestanden(id, naam));
                 }
             }
@@ -82,18 +136,21 @@ public class BestandenoverzichtController implements Initializable {
             System.out.println("VendorError: " + ex.getErrorCode());
         }
     }
-     public void handleRemove(ActionEvent event) throws IOException {
+
+    public void handleRemove(ActionEvent event) throws IOException {
         int selectedIndex = tabel.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             int dr_bestandId = (tabel.getSelectionModel().getSelectedItem().getId());
-            
+
             bestandId_label.setText(String.valueOf(dr_bestandId));
+            remove_button.setVisible(false);
+            removeconfirm_button.setVisible(true);
         } else {
-            //
+            Area.setText("Selecteer een rij in de tabel!");
         }
     }
-     
-     @FXML
+
+    @FXML
     private void handleRemoveConfirm(ActionEvent event) throws IOException {
         try {
             sendToDatabase(Integer.parseInt(bestandId_label.getText()));
@@ -103,9 +160,9 @@ public class BestandenoverzichtController implements Initializable {
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
         }
-      
+
     }
-    
+
     private void sendToDatabase(int dr_bestandId) throws IOException, SQLException {
         try {
             conn = pad.connectDatabase(conn);

@@ -5,6 +5,8 @@
  */
 package pad;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,6 +20,7 @@ import javafx.fxml.Initializable;
  * @author Team Amsta 05
  */
 public class HeaderController implements Initializable {
+
     @FXML
     private PAD pad = new PAD();
 
@@ -25,7 +28,7 @@ public class HeaderController implements Initializable {
     private void handleHome(ActionEvent event) throws IOException {
         pad.changePage("Home", "home.fxml");
     }
-    
+
     @FXML
     private void handleBestandenOverzicht(ActionEvent event) throws IOException {
         pad.changePage("Bestanden overzicht", "bestandenoverzicht.fxml");
@@ -34,6 +37,12 @@ public class HeaderController implements Initializable {
     @FXML
     private void handleSettings(ActionEvent event) throws IOException {
         pad.changePage("Instellingen", "instellingen.fxml");
+    }
+
+    @FXML
+    private void handleManual(ActionEvent event) throws IOException {
+        File myFile = new File("src/pad/manual/Gebruikershandleiding_EN.pdf");
+        Desktop.getDesktop().open(myFile);
     }
 
     @Override
