@@ -5,30 +5,25 @@
  */
 package pad;
 
+import java.awt.event.ActionListener;
 import java.io.File;
-import java.awt.event.*;
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -60,7 +55,7 @@ public class HomeController implements Initializable {
     private MediaView mediaView;
 static Thread thread = new Thread();
     private String filepath;
-    private int i = 0;
+  
 
     @FXML
 
@@ -114,6 +109,10 @@ static Thread thread = new Thread();
             }
         }
         );
+Timeline timeline = new Timeline(new KeyFrame(
+        Duration.millis(10000),
+        ae ->mediaPlayer.pause()));
+timeline.play();
 
         
     }
