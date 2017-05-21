@@ -25,6 +25,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
@@ -53,7 +54,9 @@ public class BestandenoverzichtController implements Initializable {
     @FXML
     private TextField naamField;
     @FXML
-    private Label bestandId_label;
+    private Label bestandId_label, errorLabel;
+    @FXML
+    private Pane removePane, addPane;
     @FXML
     private Button removeconfirm_button, remove_button, chooseButton;
     private String filepath;
@@ -69,23 +72,55 @@ public class BestandenoverzichtController implements Initializable {
 
     }
 
+    /**
+     * Filepath van het gekozen bestand achterhalen
+     *
+     * @param event
+     */
     @FXML
     private void handleChooseFile(ActionEvent event) {
 
         FileChooser filechoose = new FileChooser();
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Selecta dela file (*.mp4)", "*.mp4");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Select a file (*.mp4)", "*.mp4");
         filechoose.getExtensionFilters().add(filter);
         File file = filechoose.showOpenDialog(null);
 
-        filepath = file.toURI().toString();
-
-        chooseButton.setText(filepath);
+        if (file != null) {        
+            filepath = file.toURI().toString();
+            chooseButton.setText(filepath);
+        } else {
+            errorLabel.setText("Er is geen bestand geselecteerd!");
+            errorLabel.setVisible(true);
+        }
     }
 
     @FXML
+    private void handleAddPane() {
+        errorLabel.setVisible(false);
+        removePane.setVisible(false);
+        addPane.setVisible(true);
+        tabel.setPrefHeight(300.0);
+    }
+
+    @FXML
+    private void handleRemovePane() {
+        errorLabel.setVisible(false);
+        addPane.setVisible(false);
+        removePane.setVisible(true);
+        tabel.setPrefHeight(396.0);
+    }
+    
+    /**
+     *
+     * @param event
+     * @throws SQLException
+     * @throws IOException
+     */
+    @FXML
     private void handleAddDatabase(ActionEvent event) throws SQLException, IOException {
         if ((filepath == null) || (naamField.getText() == null)) {
-            System.out.println("error");
+            errorLabel.setText("Er is geen bestand geselecteerd of er is geen naam ingevuld!");
+            errorLabel.setVisible(true);
         } else {
 
             try {
@@ -146,7 +181,8 @@ public class BestandenoverzichtController implements Initializable {
             remove_button.setVisible(false);
             removeconfirm_button.setVisible(true);
         } else {
-            Area.setText("Selecteer een rij in de tabel!");
+            errorLabel.setText("Selecteer een rij in de tabel!");
+            errorLabel.setVisible(true);
         }
     }
 

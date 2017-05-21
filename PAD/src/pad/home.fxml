@@ -12,10 +12,9 @@
 <VBox id="pagestyle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@style/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pad.HomeController">
     <children>
         <fx:include fx:id="header" source="header.fxml" />
-        <Pane prefHeight="515.0">
-            <children>             
-                <MediaView fx:id="mediaView" fitHeight="-Infinity" fitWidth="-Infinity" layoutX="14.0" layoutY="14.0" />
-                <Pane fx:id="buttonsPane" layoutX="15.0" layoutY="473.0" prefHeight="28.0" prefWidth="144.0">
+        <Pane layoutX="14.0" layoutY="14.0" prefHeight="515.0">
+            <children>
+                <Pane fx:id="buttonsPane" layoutX="5.0" layoutY="459.0" prefHeight="29.0" prefWidth="966.0" style="-fx-background-color: grey;">
                     <children>
                         <Button id="playerbutton" fx:id="buttonPlay" mnemonicParsing="false" onAction="#playAndHide">
                             <graphic>
@@ -71,8 +70,19 @@
                                 </ImageView>
                             </graphic>
                         </Button>
+                        <Button id="playerbutton" layoutX="144.0" mnemonicParsing="false">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/sound.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Slider id="playerbutton" fx:id="V" layoutX="180.0" layoutY="7.5" />
                     </children>
-                </Pane>
+                </Pane>             
+                <MediaView fx:id="mediaView" fitHeight="-Infinity" fitWidth="-Infinity" layoutX="5.0" layoutY="5.0" />
             </children>
         </Pane>
     </children>

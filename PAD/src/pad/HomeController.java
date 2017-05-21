@@ -6,6 +6,7 @@
 package pad;
 
 import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -13,12 +14,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.Timer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,6 +29,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.scene.control.Slider;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -54,14 +56,15 @@ public class HomeController implements Initializable {
     @FXML
     private Pane buttonsPane;
     @FXML
+    private Slider V;
+    @FXML
     private Media media;
     @FXML
     private Parent header;
     @FXML
     private MediaView mediaView;
-
+    static Thread thread = new Thread();
     private String filepath;
-    private int i = 0;
 
     public void nextVideo() throws SQLException {
         buttonPlay.setVisible(true);
@@ -113,17 +116,35 @@ public class HomeController implements Initializable {
 
     }
 
+    public void Volume() {
+        V.setValue(mediaPlayer.getVolume() * 100);
+        V.valueProperty().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                mediaPlayer.setVolume(V.getValue() / 100);
+            }
+        }
+        );
+    }
+
     public void playAndHide(ActionEvent event) throws SQLException {
         if (filepath == null) {
             nextVideo();
             mediaPlayer.play();
+            Volume();
         } else {
             mediaPlayer.play();
+            Volume();
         }
 
         buttonPlay.setVisible(false);
         buttonPause.setVisible(true);
 
+        /*
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(10000),
+                ae -> mediaPlayer.pause()));
+        timeline.play(); */
     }
 
     @FXML

@@ -15,29 +15,36 @@
         <fx:include source="header.fxml" />
         <Pane id="pagestyle" layoutY="85.0" prefHeight="515.0" prefWidth="1000.0">
             <children>
-                <Pane layoutX="28.0" layoutY="28.0" prefHeight="459.0" prefWidth="944.0">
+                  <TableView fx:id="tabel" layoutX="28.0" layoutY="28.0" prefHeight="396.0" prefWidth="944.0">
+                      <columns>
+                          <TableColumn id="id" fx:id="id" prefWidth="90.0" text="ID" />
+                          <TableColumn id="naam" fx:id="naam" prefWidth="852.0" text="NAAM" />
+                      </columns>
+                  </TableView>
+                <Pane fx:id="removePane" layoutX="28.0" layoutY="438.0" prefHeight="49.0" prefWidth="944.0">
                     <children>
-                        <TableView fx:id="tabel" layoutX="228.0" layoutY="14.0" prefHeight="264.0" prefWidth="702.0">
-                            <columns>
-                                <TableColumn id="id" fx:id="id" prefWidth="75.0" text="ID" />
-                                <TableColumn id="naam" fx:id="naam" prefWidth="827.0" text="NAAM" />
-                            </columns>
-                        </TableView>
-                        <Button fx:id="remove_button" layoutX="14.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleRemove" prefHeight="49.0" prefWidth="200.0" text="Bestand verwijderen" />
-                        <Button fx:id="removeconfirm_button" layoutX="14.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleRemoveConfirm" prefHeight="49.0" prefWidth="200.0" text="Defenitief verwijderen" visible="false" />
+                        <Button fx:id="remove_button" layoutX="479.0" mnemonicParsing="false" onAction="#handleRemove" prefHeight="49.0" prefWidth="465.0" text="Bestand verwijderen" />
+                        <Button fx:id="removeconfirm_button" layoutX="479.0" mnemonicParsing="false" onAction="#handleRemoveConfirm" prefHeight="49.0" prefWidth="465.0" text="Defenitief verwijderen" visible="false" />
                       
                         <Label fx:id="bestandId_label" prefHeight="30.0" prefWidth="126.0" visible="false" />
 
-                   
+                        <Button mnemonicParsing="false" onAction="#handleAddPane" prefHeight="49.0" prefWidth="465.0" text="Bestand toevoegen" />
+
                     </children>
                 </Pane>
-            <Pane layoutX="28.0" layoutY="28.0" prefHeight="459.0" prefWidth="944.0" visible="false">
-               <children>
-                  <Button fx:id="chooseButton1" layoutX="298.0" layoutY="418.0" mnemonicParsing="false" onAction="#handleChooseFile" text="Bestand kiezen" />
-                  <TextField fx:id="naamField1" layoutX="430.0" layoutY="418.0" />
-                  <Button layoutX="536.0" layoutY="418.0" mnemonicParsing="false" onAction="#handleAddDatabase" text="Toevoegen" />
-               </children>
-            </Pane>
+                <Pane fx:id="addPane" layoutX="28.0" layoutY="326.0" prefHeight="161.0" prefWidth="944.0" visible="false">
+                    <children>
+                        <Button fx:id="chooseButton" layoutX="177.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleChooseFile" prefHeight="49.0" prefWidth="157.0" text="Bestand kiezen" />
+                        <TextField fx:id="naamField" layoutX="14.0" layoutY="42.0" promptText="Bestand naam" />
+                        <Button layoutY="114.0" mnemonicParsing="false" onAction="#handleAddDatabase" prefHeight="49.0" prefWidth="465.0" text="Toevoegen" />
+                  <Button layoutX="479.0" layoutY="114.0" mnemonicParsing="false" onAction="#handleRemovePane" prefHeight="49.0" prefWidth="465.0" text="Terug" />
+                    </children>
+                </Pane>
+            <Label fx:id="errorLabel" layoutX="28.0" prefHeight="17.0" prefWidth="944.0" textFill="RED" visible="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
             </children>
         </Pane>
     </children>

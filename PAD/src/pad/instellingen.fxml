@@ -16,9 +16,10 @@
         <Pane id="pagestyle" layoutY="85.0" prefHeight="515.0" prefWidth="1000.0">
             <children>
                 <Pane layoutX="28.0" layoutY="28.0" prefHeight="459.0" prefWidth="944.0">
-                    <children>
-                        <TextArea prefHeight="200.0" prefWidth="200.0" text="Hier moet: &#10;&#10;- Beamer aan en uit doen&#10;" />
-                    </children>
+               <children>
+                  <Button layoutX="184.0" layoutY="180.0" mnemonicParsing="false" text="Aan zetten" />
+                  <Button layoutX="277.0" layoutY="180.0" mnemonicParsing="false" text="Uitzetten" />
+               </children>
                 </Pane>
             </children>
         </Pane>
