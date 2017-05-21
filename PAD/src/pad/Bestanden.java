@@ -11,7 +11,7 @@ import javafx.fxml.FXML;
 
 /**
  *
- * @author Team PAD
+ * @author Team Amsta 05
  */
 public class Bestanden {
     @FXML private final SimpleIntegerProperty id;

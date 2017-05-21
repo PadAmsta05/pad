@@ -5,9 +5,6 @@
  */
 package pad;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -15,9 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.event.ActionEvent;
@@ -25,16 +19,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Slider;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.stage.FileChooser;
-import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -63,9 +52,15 @@ public class HomeController implements Initializable {
     private Parent header;
     @FXML
     private MediaView mediaView;
-    static Thread thread = new Thread();
+    @FXML
+    private int timeInt = 0;
+
     private String filepath;
 
+    /**
+     * Volgende video
+     * @throws SQLException 
+     */
     public void nextVideo() throws SQLException {
         buttonPlay.setVisible(true);
         buttonPause.setVisible(false);
@@ -113,11 +108,14 @@ public class HomeController implements Initializable {
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
         }
-
     }
 
+    /**
+     * Volume schuifje
+     */
     public void Volume() {
         V.setValue(mediaPlayer.getVolume() * 100);
+
         V.valueProperty().addListener(new InvalidationListener() {
             @Override
             public void invalidated(Observable observable) {
@@ -127,6 +125,12 @@ public class HomeController implements Initializable {
         );
     }
 
+    /**
+     * Play knopje drukken
+     *
+     * @param event
+     * @throws SQLException
+     */
     public void playAndHide(ActionEvent event) throws SQLException {
         if (filepath == null) {
             nextVideo();
@@ -147,6 +151,11 @@ public class HomeController implements Initializable {
         timeline.play(); */
     }
 
+    /**
+     * Pauze knopje drukken
+     *
+     * @param event
+     */
     @FXML
     public void pauseAndHide(ActionEvent event) {
         mediaPlayer.pause();
@@ -154,6 +163,11 @@ public class HomeController implements Initializable {
         buttonPause.setVisible(false);
     }
 
+    /**
+     * Stop knopje drukken
+     *
+     * @param event
+     */
     @FXML
     public void stopAndHide(ActionEvent event) {
         mediaPlayer.stop();
@@ -162,6 +176,12 @@ public class HomeController implements Initializable {
 
     }
 
+    /**
+     * Scherm groot maken
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void expand(ActionEvent event) throws IOException {
         pad.fullScreen(true);
@@ -171,8 +191,15 @@ public class HomeController implements Initializable {
         mediaView.setFitHeight(690);
         mediaView.setLayoutY(-71);
         header.setVisible(false);
+        buttonsPane.setPrefWidth(1100.0);
     }
 
+    /**
+     * Scherm kleiner maken
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void makeSmaller(ActionEvent event) throws IOException {
         pad.fullScreen(false);
@@ -182,17 +209,11 @@ public class HomeController implements Initializable {
         mediaView.setFitHeight(440);
         mediaView.setLayoutY(14);
         header.setVisible(true);
-
+        buttonsPane.setPrefWidth(966.0);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         mediaView.setFitHeight(440);
-    }
-
-    public void keyReleased(KeyEvent ke) {
-        if (ke.getKeyCode() == KeyEvent.VK_ESCAPE) {
-            System.out.println("Wat druk je esc matsko?");
-        }
     }
 }

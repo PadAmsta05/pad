@@ -24,21 +24,41 @@ public class HeaderController implements Initializable {
     @FXML
     private PAD pad = new PAD();
 
+    /**
+     * Naar home pagina
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void handleHome(ActionEvent event) throws IOException {
         pad.changePage("Home", "home.fxml");
     }
 
+    /**
+     * Naar bestanden overzicht pagina
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void handleBestandenOverzicht(ActionEvent event) throws IOException {
         pad.changePage("Bestanden overzicht", "bestandenoverzicht.fxml");
     }
 
+    /**
+     * Naar instellingen pagina
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void handleSettings(ActionEvent event) throws IOException {
         pad.changePage("Instellingen", "instellingen.fxml");
     }
 
+    /**
+     * Open gebruikershandleiding
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void handleManual(ActionEvent event) throws IOException {
         File myFile = new File("src/pad/manual/Gebruikershandleiding_EN.pdf");

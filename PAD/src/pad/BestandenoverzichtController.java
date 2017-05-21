@@ -67,9 +67,7 @@ public class BestandenoverzichtController implements Initializable {
         getBestandData();
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         naam.setCellValueFactory(new PropertyValueFactory<>("naam"));
-
         tabel.setItems(data);
-
     }
 
     /**
@@ -85,7 +83,7 @@ public class BestandenoverzichtController implements Initializable {
         filechoose.getExtensionFilters().add(filter);
         File file = filechoose.showOpenDialog(null);
 
-        if (file != null) {        
+        if (file != null) {
             filepath = file.toURI().toString();
             chooseButton.setText(filepath);
         } else {
@@ -94,6 +92,9 @@ public class BestandenoverzichtController implements Initializable {
         }
     }
 
+    /**
+     * Naar toevoegen pane
+     */
     @FXML
     private void handleAddPane() {
         errorLabel.setVisible(false);
@@ -102,6 +103,9 @@ public class BestandenoverzichtController implements Initializable {
         tabel.setPrefHeight(300.0);
     }
 
+    /**
+     * Naar verwijderen pane
+     */
     @FXML
     private void handleRemovePane() {
         errorLabel.setVisible(false);
@@ -109,9 +113,9 @@ public class BestandenoverzichtController implements Initializable {
         removePane.setVisible(true);
         tabel.setPrefHeight(396.0);
     }
-    
+
     /**
-     *
+     * Gegevens aan database toevoegen
      * @param event
      * @throws SQLException
      * @throws IOException
@@ -146,6 +150,9 @@ public class BestandenoverzichtController implements Initializable {
         }
     }
 
+    /**
+     * Tabel vullen
+     */
     public void getBestandData() {
         try {
             conn = pad.connectDatabase(conn);
@@ -172,6 +179,11 @@ public class BestandenoverzichtController implements Initializable {
         }
     }
 
+    /**
+     * Bestand uit database verwijderen
+     * @param event
+     * @throws IOException 
+     */
     public void handleRemove(ActionEvent event) throws IOException {
         int selectedIndex = tabel.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
@@ -186,6 +198,11 @@ public class BestandenoverzichtController implements Initializable {
         }
     }
 
+    /**
+     * Bestand verwijderen accepteren
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void handleRemoveConfirm(ActionEvent event) throws IOException {
         try {
@@ -199,6 +216,12 @@ public class BestandenoverzichtController implements Initializable {
 
     }
 
+    /**
+     * Bestand uit database verwijderen, SQL
+     * @param dr_bestandId
+     * @throws IOException
+     * @throws SQLException 
+     */
     private void sendToDatabase(int dr_bestandId) throws IOException, SQLException {
         try {
             conn = pad.connectDatabase(conn);

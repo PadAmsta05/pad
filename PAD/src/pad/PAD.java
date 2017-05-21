@@ -24,6 +24,11 @@ public class PAD extends Application {
 
     private static Stage parentWindow;
 
+    /**
+     * Pane maken bij opstarten
+     * @param stage
+     * @throws Exception 
+     */
     @Override
     public void start(Stage stage) throws Exception {
         parentWindow = stage;
@@ -37,6 +42,12 @@ public class PAD extends Application {
 
     }
 
+    /**
+     * Van FXML veranderen
+     * @param titleWindow
+     * @param newWindow
+     * @throws IOException 
+     */
     public void changePage(String titleWindow, String newWindow) throws IOException {
         Parent window;
         window = FXMLLoader.load(getClass().getResource(newWindow));
@@ -48,6 +59,11 @@ public class PAD extends Application {
 
     }
     
+    /**
+     * Volledig scherm
+     * @param aanuit
+     * @throws IOException 
+     */
     public void fullScreen(Boolean aanuit) throws IOException {
         Stage mainStage;
         mainStage = PAD.parentWindow;
@@ -55,6 +71,12 @@ public class PAD extends Application {
     }
       
 
+    /**
+     * Connectie met database
+     * @param conn
+     * @return
+     * @throws SQLException 
+     */
     public Connection connectDatabase(Connection conn) throws SQLException {
         conn = DriverManager.getConnection("jdbc:mysql://localhost/amstadatabase?user=root&password=root&useSSL=false");
         return conn;
