@@ -22,8 +22,10 @@ import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -53,9 +55,28 @@ public class HomeController implements Initializable {
     private Media media;
     @FXML
     private MediaView mediaView;
-static Thread thread = new Thread();
+    @FXML
+    private TextField time;
+    private int timeInt = 0 ;
+
+private InstellingenController in = new InstellingenController();
+
     private String filepath;
-  
+    @FXML
+    public void sTime(){
+      try{  
+      String timerString = time.getText();
+ 
+          timeInt = Integer.parseInt(timerString);  
+      }catch (NumberFormatException e) {
+      
+      }
+    }
+
+    
+
+
+ 
 
     @FXML
 
@@ -90,6 +111,7 @@ static Thread thread = new Thread();
                   
                     stmt.executeUpdate(sql);
                 }
+               
             }
         } catch (SQLException ex) {
             // handle any errors
@@ -98,7 +120,6 @@ static Thread thread = new Thread();
             System.out.println("VendorError: " + ex.getErrorCode());
         }
     }
-
     public void playAndHide(ActionEvent event) throws InterruptedException {
         mediaPlayer.play();
          V.setValue(mediaPlayer.getVolume() *100);
@@ -110,10 +131,10 @@ static Thread thread = new Thread();
         }
         );
 Timeline timeline = new Timeline(new KeyFrame(
-        Duration.millis(10000),
+        Duration.millis(timeInt*1000),
         ae ->mediaPlayer.pause()));
 timeline.play();
-
+        System.out.println(timeInt);
         
     }
 
