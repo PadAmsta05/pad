@@ -187,11 +187,11 @@ public class HomeController implements Initializable {
         pad.fullScreen(true);
         buttonExpand.setVisible(false);
         buttonSmaller.setVisible(true);
-        buttonsPane.setLayoutY(627);
+        buttonsPane.setLayoutY(650);
         mediaView.setFitHeight(690);
         mediaView.setLayoutY(-71);
         header.setVisible(false);
-        buttonsPane.setPrefWidth(1100.0);
+        buttonsPane.setPrefWidth(1500.0);
     }
 
     /**
@@ -205,11 +205,11 @@ public class HomeController implements Initializable {
         pad.fullScreen(false);
         buttonExpand.setVisible(true);
         buttonSmaller.setVisible(false);
-        buttonsPane.setLayoutY(473);
+        buttonsPane.setLayoutY(486.0);
         mediaView.setFitHeight(440);
         mediaView.setLayoutY(14);
         header.setVisible(true);
-        buttonsPane.setPrefWidth(966.0);
+        buttonsPane.setPrefWidth(1000.0);
     }
 
     @Override

@@ -17,8 +17,15 @@
             <children>
                 <Pane layoutX="28.0" layoutY="28.0" prefHeight="459.0" prefWidth="944.0">
                <children>
-                  <Button layoutX="184.0" layoutY="180.0" mnemonicParsing="false" text="Aan zetten" />
-                  <Button layoutX="277.0" layoutY="180.0" mnemonicParsing="false" text="Uitzetten" />
+                  <Button layoutX="48.0" layoutY="79.5" mnemonicParsing="false" prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: green; -fx-background-radius: 0; -fx-border-color: darkgreen; -fx-border-width: 3;" text="Aanzetten" textFill="DARKGREEN">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="496.0" layoutY="79.5" mnemonicParsing="false" prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: red; -fx-background-radius: 0; -fx-border-color: darkred; -fx-border-width: 3;" text="Uitzetten" textFill="DARKRED">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font></Button>
                </children>
                 </Pane>
             </children>

@@ -23,21 +23,21 @@
                   </TableView>
                 <Pane fx:id="removePane" layoutX="28.0" layoutY="438.0" prefHeight="49.0" prefWidth="944.0">
                     <children>
-                        <Button fx:id="remove_button" layoutX="479.0" mnemonicParsing="false" onAction="#handleRemove" prefHeight="49.0" prefWidth="465.0" text="Bestand verwijderen" />
-                        <Button fx:id="removeconfirm_button" layoutX="479.0" mnemonicParsing="false" onAction="#handleRemoveConfirm" prefHeight="49.0" prefWidth="465.0" text="Defenitief verwijderen" visible="false" />
+                        <Button id="mainbutton" fx:id="remove_button" layoutX="479.0" mnemonicParsing="false" onAction="#handleRemove" prefHeight="49.0" prefWidth="465.0" text="Bestand verwijderen" />
+                        <Button id="mainbutton" fx:id="removeconfirm_button" layoutX="479.0" mnemonicParsing="false" onAction="#handleRemoveConfirm" prefHeight="49.0" prefWidth="465.0" text="Defenitief verwijderen" visible="false" />
                       
                         <Label fx:id="bestandId_label" prefHeight="30.0" prefWidth="126.0" visible="false" />
 
-                        <Button mnemonicParsing="false" onAction="#handleAddPane" prefHeight="49.0" prefWidth="465.0" text="Bestand toevoegen" />
+                        <Button id="mainbutton" mnemonicParsing="false" onAction="#handleAddPane" prefHeight="49.0" prefWidth="465.0" text="Bestand toevoegen" />
 
                     </children>
                 </Pane>
                 <Pane fx:id="addPane" layoutX="28.0" layoutY="326.0" prefHeight="161.0" prefWidth="944.0" visible="false">
                     <children>
-                        <Button fx:id="chooseButton" layoutX="177.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleChooseFile" prefHeight="49.0" prefWidth="157.0" text="Bestand kiezen" />
-                        <TextField fx:id="naamField" layoutX="14.0" layoutY="42.0" promptText="Bestand naam" />
-                        <Button layoutY="114.0" mnemonicParsing="false" onAction="#handleAddDatabase" prefHeight="49.0" prefWidth="465.0" text="Toevoegen" />
-                  <Button layoutX="479.0" layoutY="114.0" mnemonicParsing="false" onAction="#handleRemovePane" prefHeight="49.0" prefWidth="465.0" text="Terug" />
+                        <Button id="mainbutton" fx:id="chooseButton" layoutY="55.0" mnemonicParsing="false" onAction="#handleChooseFile" prefHeight="49.0" prefWidth="465.0" text="Bestand kiezen" />
+                        <TextField fx:id="naamField" layoutY="14.0" prefHeight="30.0" prefWidth="465.0" promptText="Bestands naam" />
+                        <Button id="mainbutton" layoutY="114.0" mnemonicParsing="false" onAction="#handleAddDatabase" prefHeight="49.0" prefWidth="465.0" text="Toevoegen" />
+                  <Button id="mainbutton" layoutX="479.0" layoutY="114.0" mnemonicParsing="false" onAction="#handleRemovePane" prefHeight="49.0" prefWidth="465.0" text="Terug" />
                     </children>
                 </Pane>
             <Label fx:id="errorLabel" layoutX="28.0" prefHeight="17.0" prefWidth="944.0" textFill="RED" visible="false">

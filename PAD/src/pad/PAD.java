@@ -72,7 +72,7 @@ public class PAD extends Application {
       
 
     /**
-     * Connectie met database
+     * Connectie met de database
      * @param conn
      * @return
      * @throws SQLException 
