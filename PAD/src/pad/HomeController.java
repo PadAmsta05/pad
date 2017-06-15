@@ -47,8 +47,6 @@ public class HomeController implements Initializable {
     @FXML
     private Slider V;
     @FXML
-    private Media media;
-    @FXML
     private Parent header;
     @FXML
     private MediaView mediaView;

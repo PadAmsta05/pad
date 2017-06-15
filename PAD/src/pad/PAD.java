@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,7 +24,11 @@ import javafx.stage.Stage;
 public class PAD extends Application {
 
     private static Stage parentWindow;
-
+    @FXML
+    private final Sensor sensor = new Sensor();
+    @FXML
+    private final HomeController homecontroller = new HomeController();
+    
     /**
      * Pane maken bij opstarten
      * @param stage
@@ -39,7 +44,8 @@ public class PAD extends Application {
         stage.setTitle("Amsta");
         stage.getIcons().add(new Image("https://www.amsta.nl/themes/custom/amsta/images/favicon/favicon-32x32.png"));
         stage.show();
-
+        
+        //sensor.maakVerbinding();
     }
 
     /**
@@ -64,10 +70,13 @@ public class PAD extends Application {
      * @param aanuit
      * @throws IOException 
      */
-    public void fullScreen(Boolean aanuit) throws IOException {
+    public void fullScreen(Boolean aanuit) throws IOException, SQLException {
         Stage mainStage;
         mainStage = PAD.parentWindow;
         mainStage.setFullScreen(aanuit);
+        /*if(sensor.checkSignaal() == true) {
+            homecontroller.nextVideo();
+        } */
     }
       
 

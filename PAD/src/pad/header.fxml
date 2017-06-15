@@ -29,12 +29,6 @@
                   
                 </Button>
                 <SplitPane id="splitter" />
-                <Button id="menubutton" fx:id="settings" mnemonicParsing="false" onAction="#handleSettings" prefHeight="48.0" text="Instellingen" textFill="WHITE">
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor>
-                </Button>
-                <SplitPane id="splitter" />
                 <Button id="menubutton" fx:id="manual" mnemonicParsing="false" onAction="#handleManual" prefHeight="48.0" text="Gebruikershandleiding" textFill="WHITE">
                     <cursor>
                         <Cursor fx:constant="HAND" />

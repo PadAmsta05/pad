@@ -26,8 +26,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 
 /**
@@ -126,7 +124,6 @@ public class BestandenoverzichtController implements Initializable {
             errorLabel.setText("Er is geen bestand geselecteerd of er is geen naam ingevuld!");
             errorLabel.setVisible(true);
         } else {
-
             try {
                 Statement stmt = null;
                 Connection conn = null;

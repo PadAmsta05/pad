@@ -12,47 +12,44 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 
 /**
  *
- * @author Nick
+ * @author Team Amsta 05
  */
 public class Sensor extends HomeController {
-// declaration section:
-// declare a server socket and a client socket for the server
-// declare an input and an output stream
-        ServerSocket echoServer = null;
-        DataInputStream is;
-        PrintStream os;
-        Socket clientSocket = null;
-// Try to open a server socket on port 9999
-// Note that we can't choose a port less than 1023 if we are not
-// privileged users (root)
-        public void maakVerbinding(){
-            
+
+    ServerSocket echoServer = null;
+    DataInputStream is;
+    PrintStream os;
+    Socket clientSocket = null;
+
+    /**
+     * 
+     */
+    public void maakVerbinding() {
         try {
             echoServer = new ServerSocket(3456);
         } catch (IOException e) {
             System.out.println(e);
         }
-        }
-// Create a socket object from the ServerSocket to listen and accept 
-// connections.
-// Open input and output streams
-        public void checkSignaal(){
-            
+    }
+
+    public boolean checkSignaal() throws SQLException {
         try {
             clientSocket = echoServer.accept();
             System.out.println("Connected");
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             while (true) {
                 if (in.toString() != null) {
-                    
+                  return true;
                 }
+                return false;
             }
         } catch (IOException e) {
             System.out.println(e);
         }
-        }
+       return false;
+    }
 }
-        

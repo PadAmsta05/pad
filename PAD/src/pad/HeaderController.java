@@ -45,23 +45,13 @@ public class HeaderController implements Initializable {
     }
 
     /**
-     * Naar instellingen pagina
-     * @param event
-     * @throws IOException 
-     */
-    @FXML
-    private void handleSettings(ActionEvent event) throws IOException {
-        pad.changePage("Instellingen", "instellingen.fxml");
-    }
-
-    /**
      * Open gebruikershandleiding
      * @param event
      * @throws IOException 
      */
     @FXML
     private void handleManual(ActionEvent event) throws IOException {
-        File myFile = new File("src/pad/manual/Gebruikershandleiding_EN.pdf");
+        File myFile = new File("src/pad/manual/Gebruikershandleiding.pdf");
         Desktop.getDesktop().open(myFile);
     }
 
