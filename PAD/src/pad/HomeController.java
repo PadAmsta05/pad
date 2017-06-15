@@ -181,7 +181,7 @@ public class HomeController implements Initializable {
      * @throws IOException
      */
     @FXML
-    public void expand(ActionEvent event) throws IOException {
+    public void expand(ActionEvent event) throws IOException, SQLException {
         pad.fullScreen(true);
         buttonExpand.setVisible(false);
         buttonSmaller.setVisible(true);
@@ -199,7 +199,7 @@ public class HomeController implements Initializable {
      * @throws IOException
      */
     @FXML
-    public void makeSmaller(ActionEvent event) throws IOException {
+    public void makeSmaller(ActionEvent event) throws IOException, SQLException {
         pad.fullScreen(false);
         buttonExpand.setVisible(true);
         buttonSmaller.setVisible(false);
