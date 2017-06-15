@@ -24,10 +24,10 @@ import javafx.stage.Stage;
 public class PAD extends Application {
 
     private static Stage parentWindow;
-    @FXML
-    private final Sensor sensor = new Sensor();
-    @FXML
-    private final HomeController homecontroller = new HomeController();
+    //@FXML
+    //private final Sensor sensor = new Sensor();
+    //@FXML
+    //private final HomeController homecontroller = new HomeController();
     
     /**
      * Pane maken bij opstarten
@@ -74,9 +74,10 @@ public class PAD extends Application {
         Stage mainStage;
         mainStage = PAD.parentWindow;
         mainStage.setFullScreen(aanuit);
-        /*if(sensor.checkSignaal() == true) {
+        /*
+        while (sensor.checkSignaal() == true) {
             homecontroller.nextVideo();
-        } */
+        }*/
     }
       
 

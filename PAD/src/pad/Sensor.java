@@ -26,30 +26,38 @@ public class Sensor extends HomeController {
     Socket clientSocket = null;
 
     /**
-     * 
+     * Verding maken met de raspberry Pi
      */
     public void maakVerbinding() {
         try {
+            //Signaal accepteren van raspberry Pi
+            clientSocket = echoServer.accept();
+            System.out.println("Connected");
+            //Poort pc
             echoServer = new ServerSocket(3456);
         } catch (IOException e) {
             System.out.println(e);
         }
     }
 
+    /**
+     * Kijkt of het signaal er is
+     * @return true of false
+     * @throws SQLException 
+     */
     public boolean checkSignaal() throws SQLException {
         try {
-            clientSocket = echoServer.accept();
-            System.out.println("Connected");
+            //Leest de boodschap van de Pi die eindigt met /n
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            while (true) {
-                if (in.toString() != null) {
-                  return true;
-                }
-                return false;
+
+            if (in.toString() != null) {
+                return true;
             }
+            return false;
+
         } catch (IOException e) {
             System.out.println(e);
         }
-       return false;
+        return false;
     }
 }

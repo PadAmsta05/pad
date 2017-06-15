@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.event.ActionEvent;
@@ -24,6 +26,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -57,7 +60,8 @@ public class HomeController implements Initializable {
 
     /**
      * Volgende video
-     * @throws SQLException 
+     *
+     * @throws SQLException
      */
     public void nextVideo() throws SQLException {
         buttonPlay.setVisible(true);
@@ -90,6 +94,7 @@ public class HomeController implements Initializable {
                         try {
                             nextVideo();
                             mediaPlayer.play();
+                            Autostop();
                         } catch (SQLException ex) {
                             // handle any errors
                             System.out.println("SQLException: " + ex.getMessage());
@@ -124,6 +129,16 @@ public class HomeController implements Initializable {
     }
 
     /**
+     * Stopt automatisch het filmpje na 10000 miliseconden
+     */
+    public void Autostop() {
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(10000),
+                ae -> mediaPlayer.pause()));
+        timeline.play();
+    }
+
+    /**
      * Play knopje drukken
      *
      * @param event
@@ -134,19 +149,16 @@ public class HomeController implements Initializable {
             nextVideo();
             mediaPlayer.play();
             Volume();
+            Autostop();
         } else {
             mediaPlayer.play();
             Volume();
+            Autostop();
         }
 
         buttonPlay.setVisible(false);
         buttonPause.setVisible(true);
 
-        /*
-        Timeline timeline = new Timeline(new KeyFrame(
-                Duration.millis(10000),
-                ae -> mediaPlayer.pause()));
-        timeline.play(); */
     }
 
     /**
